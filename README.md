@@ -87,13 +87,24 @@ if using TFTP method
 ```
 4. access openwrt.local by dhcp ip address assigned by your router or at 192.168.1.1 if connected directly with ethernet to your PC/mac:
 
-notes;
-1 - sata drives should not be installed when installing & any data will not be accessible until LVM and mdadm modules are installed.
-
-2 - this is a 1 way process. Once the nand is overwritten returning to stock will not be possible.
-
-3 - to access u-boot variables from within openwrt add the following lines to /etc/fw_env.config in openwrt
+Notes:
+ - SATA drives should not be inserted when installing the OperWRT operating system
+ - any data on the drives will not be accessible until `LVM` and `mdadm` modules are installed.
+ - this is a 1 way process. Once the nand is overwritten returning to stock will not be possible.
+ - to access the u-boot variables from within openwrt, add the following lines to /etc/fw_env.config in openwrt
 ```
 /dev/mtd1 0x0000 0x20000 0x20000
 /dev/mtd2 0x0000 0x20000 0x20000
 ```
+- after accessing openwrt.local webinterface, navigate to `System` - `Software`, click on `Configure OPKG...`
+  then in the section `/etc/opkg/distfeeds.conf` replace with following:
+```
+  src/gz openwrt_core https://mirror-03.infra.openwrt.org/releases/21.02-SNAPSHOT/targets/kirkwood/generic/packages/
+  src/gz openwrt_base https://mirror-03.infra.openwrt.org/releases/21.02-SNAPSHOT/packages/arm_xscale/base
+  src/gz openwrt_luci https://mirror-03.infra.openwrt.org/releases/21.02-SNAPSHOT/packages/arm_xscale/luci
+  src/gz openwrt_packages https://mirror-03.infra.openwrt.org/releases/21.02-SNAPSHOT/packages/arm_xscale/packages
+  src/gz openwrt_routing https://mirror-03.infra.openwrt.org/releases/21.02-SNAPSHOT/packages/arm_xscale/routing
+  src/gz openwrt_telephony https://mirror-03.infra.openwrt.org/releases/21.02-SNAPSHOT/packages/arm_xscale/telephony
+```
+- click `Save`, then `Update Lists...`
+
