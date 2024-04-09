@@ -1,4 +1,4 @@
-# openwrt for lenovo /iomega ix2-dl
+# OpenWRT for lenovo /iomega ix2-dl
 openwrt for the Lenovo / Iomega IX2-DL NAS
 
 This project includes the files needed to compile OpenWRT for the lenovo / Iomega ix2-dl NAS
