@@ -45,6 +45,7 @@ This runs OpenWrt from ram to allow sysupgrade to install to nand.
 
 1. Download initramfs-uImage and sysupgrade images, copy them on your tftp server (or ext2 formatted usb drive)
 (i.e `openwrt-21-02-defconfig-kirkwood-lenovo_ix2-dl-initramfs-uImage` and `openwrt-21-02-full-kirkwood-lenovo_ix2-dl-squashfs-sysupgrade.bin`)
+
 2. After power on, while connected over console (115200, N, 8, 1), hit any key to stop the boot process. 
 This is the uboot environment, run the following commands, one at the time:
 ```
