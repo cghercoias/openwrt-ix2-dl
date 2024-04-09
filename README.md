@@ -1,3 +1,6 @@
+Credit goes to: jdwl1o1 for building this repository
+Thanks to Bodhi, Luo and hippi-viking @ forum.doozan.com for dts & u-boot assistance.
+
 # OpenWRT for Lenovo / Iomega ix2-dl
 openwrt for the Lenovo / Iomega IX2-DL NAS
 
@@ -9,7 +12,6 @@ Files and images are provided 'as is' with no warranty or guarantee.
 
 License is GPL2, unless otherwise specified in the files. No ownership is claimed over work of others.
 
-Thanks to Bodhi, Luo and hippi-viking @ forum.doozan.com for dts & u-boot assistance.
 
 Lenovo ix2-dl is a dual SATA NAS powered by a Marvell
  Kirkwood SoC clocked at 1.6GHz. It has 256MB of RAM and 1GiB of
