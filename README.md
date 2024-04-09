@@ -8,17 +8,26 @@ This project includes the files needed to compile OpenWRT for the Lenovo / Iomeg
 
 details of openwrt are available at openwrt.org  
 
-Files and images are provided 'as is' with no warranty or guarantee.
+Files and images are provided 'as is' with no warranty or guarantees
+This is a one way process. Once the NAND is overwritten, returning to stock will not be possible.
+
+The information provided in this repository is for general informational purposes only. 
+All information here is provided in good faith, however we make no representation or warranty of any kind, 
+express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness 
+of any information.
+Under no circumstance shall we have any liability to you for any loss or damage of any kind incurred 
+as a result of the use of the code in this repository or reliance on any information provided. 
+Your use of the code and your reliance on any information on this repository is solely at your own risk.
 
 License is GPL2, unless otherwise specified in the files. No ownership is claimed over work of others.
 
 
 Lenovo ix2-dl is a dual SATA NAS powered by a Marvell
  Kirkwood SoC clocked at 1.6GHz. It has 256MB of RAM and 1GiB of
- flash memory, 1x USB 2.0 and 1x 1Gbit/s NIC. 
+ flash memory (NAND), 1x USB 2.0 and 1x 1Gbit/s NIC. 
  Was also sold by Iomega as the Iomega StorCentre ix2-dl.
  This device is very similar to the ix2-200 however it lacks 2 USB ports and includes 
- a larger nand flash unit. The IX2-DL was sold without drives, with the OS stored in nand.
+ a larger nand flash unit. The IX2-DL was sold without drives, with the OS stored on 1GB NAND.
 ```
 Specification:
 - SoC: Marvell Kirkwood 88F6282
