@@ -1,7 +1,7 @@
-# OpenWRT for lenovo /iomega ix2-dl
+# OpenWRT for Lenovo / Iomega ix2-dl
 openwrt for the Lenovo / Iomega IX2-DL NAS
 
-This project includes the files needed to compile OpenWRT for the lenovo / Iomega ix2-dl NAS
+This project includes the files needed to compile OpenWRT for the Lenovo / Iomega ix2-dl NAS
 
 details of openwrt are available at openwrt.org  
 
@@ -32,8 +32,10 @@ Specification:
 Installation instructions (modified from the ix2-200): 
 This runs OpenWrt from ram to allow sysupgrade to install to nand.
 
-1. download initramfs-uImage image and sysupgrade image, copy into tftp server or ext2 formatted usb drive
-2. access uboot environment with serial cable and run
+1. Download initramfs-uImage and sysupgrade images, copy them on your tftp server (or ext2 formatted usb drive)
+(i.e `openwrt-21-02-defconfig-kirkwood-lenovo_ix2-dl-initramfs-uImage` and `openwrt-21-02-full-kirkwood-lenovo_ix2-dl-squashfs-sysupgrade.bin`)
+2. After power on, while connected over console (115200, N, 8, 1), hit any key to stop the boot process. 
+This is the uboot environment, run the following commands, one at the time:
 ```
     setenv mainlineLinux yes
     setenv console 'console=ttyS0,115200'
@@ -47,21 +49,31 @@ For USB Boot:   
 ```
  usb reset; ext2load usb 0:1 0x00800000 /[initramfs image]; bootm 0x00800000
 ```
-For TFTP boot:
+If you boot from a TFTP server (recommended):
 ```
     setenv serverip [tftp server ip]    
     setenv ipaddr 192.168.1.13
     tftpboot 0x00800000 [initramfs image]
     bootm 0x00800000
 ```
-3. ssh to openwrt and sysupgrade to install into flash
+replace [tftp server ip]  with your TFTP server
+replace [initramfs image] with the exact name of the file that is on the TFTP server (i.e `openwrt-21-02-defconfig-kirkwood-lenovo_ix2-dl-initramfs-uImage`)
+After it loads the initramfs image, you need to transfer the `sysupgrade` image. You can use `scp` from the TFTP server to the IX2-DL, like so:
+```
+scp openwrt-21-02-full-kirkwood-lenovo_ix2-dl-squashfs-sysupgrade.bin root@opewwrt.local:/mnt
+```
+3. You can continue on the console, or ssh to `openwrt.local` and sysupgrade to install into flash.
+If using USB flash:
 ```
     mkdir /mnt/usb
     mount /dev/sda1 /mnt/usb
-    cp /mnt/usb/*sysupgrade* /tmp   
-    sysupgrade -n /tmp/sysupgrade.bin
 ```
-4. access openwrt by dhcp ip address assigned by your router or at 192.168.1.1
+if using TFTP method
+```
+    cp /mnt/openwrt-21-02-full-kirkwood-lenovo_ix2-dl-squashfs-sysupgrade.bin /tmp   
+    sysupgrade -n /tmp/openwrt-21-02-full-kirkwood-lenovo_ix2-dl-squashfs-sysupgrade.bin
+```
+4. access openwrt.local by dhcp ip address assigned by your router or at 192.168.1.1 if connected directly with ethernet to your PC/mac:
 
 notes;
 1 - sata drives should not be installed when installing & any data will not be accessible until LVM and mdadm modules are installed.
